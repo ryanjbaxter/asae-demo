@@ -1,9 +1,12 @@
 # Shopping Service For ASA-E
 
-## Deploying to ASA-#
+## Deploying to ASA-E
+```shell
 $ export ASAE_SERVICE=<service-name>
 $ export ASAE_RESOURCE_GROUP=<resource-group>
 $ ./asae/deploy.sh
+
+```
 
 NOTE: The below docs are outdated
 
