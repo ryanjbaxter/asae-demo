@@ -1,7 +1,7 @@
 management:
   endpoint:
     chaosmonkey:
-      enabled: true
+      enabled: false
     restart:
       enabled: true
     health:
