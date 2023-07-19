@@ -1,0 +1,17 @@
+{
+  "protocol": "HTTP",
+  "routes": [
+    {
+      "title": "Toys API",
+      "description": "Proxy to toys service",
+      "predicates": [
+        "Path=/toys/bestseller",
+        "Method=GET"
+      ],
+      "filters": [
+        "StripPrefix=0",
+        "CircuitBreaker=myCircuitBreaker,forward:/hotdeals"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "protocol": "HTTP",
+  "routes": [
+    {
+      "title": "Hot deals API",
+      "description": "Proxy to hot deals service",
+      "predicates": [
+        "Path=/hotdeals",
+        "Method=GET"
+      ],
+      "filters": [
+        "StripPrefix=0"
+      ]
+    }
+  ]
+}

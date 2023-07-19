@@ -1,3 +1,13 @@
+# Shopping Service For ASA-E
+
+## Deploying to ASA-#
+$ export ASAE_SERVICE=<service-name>
+$ export ASAE_RESOURCE_GROUP=<resource-group>
+$ ./asae/deploy.sh
+
+NOTE: The below docs are outdated
+
+
 # chaos-monkey-spring-boot-demo
 Demo of Chaos Monkey for Spring Boot Using Spring Cloud Kubernetes
 

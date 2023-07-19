@@ -1,0 +1,16 @@
+{
+  "protocol": "HTTP",
+  "routes": [
+    {
+      "title": "Fashion API",
+      "description": "Proxy to fashion service",
+      "predicates": [
+        "Path=/fashion/bestseller",
+        "Method=GET"
+      ],
+      "filters": [
+        "StripPrefix=0"
+      ]
+    }
+  ]
+}
