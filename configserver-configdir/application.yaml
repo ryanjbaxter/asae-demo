@@ -1,7 +1,7 @@
 management:
   endpoint:
     chaosmonkey:
-      enabled: false
+      enabled: true
     restart:
       enabled: true
     health:
@@ -14,7 +14,7 @@ management:
         include: '*'
 chaos:
   monkey:
-    enabled: true
+    enabled: false
     watcher:
       restController: true
       service: false
