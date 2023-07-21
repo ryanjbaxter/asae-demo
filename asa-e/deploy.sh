@@ -1,8 +1,13 @@
 #!/bin/bash
 
 echo "Creating Resource Group and ASA-E instance"
-# az group create -l $ASAE_LOCATION -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
-# az spring create -n $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP -l $ASAE_LOCATION --sku Enterprise
+az group create -l $ASAE_LOCATION -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
+az spring create -n $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP -l $ASAE_LOCATION --sku Enterprise --subscription $ASAE_SUBSCRIPTION
+
+echo "Create ASA scaffolding"
+az spring service-registry create -s $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
+az spring application-configuration-service create -s $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
+az spring gateway create -s $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
 
 echo "Creating Spring Apps"
 echo "Note these may fail if the apps already exist"
