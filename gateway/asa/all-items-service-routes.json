@@ -2,10 +2,10 @@
   "protocol": "HTTP",
   "routes": [
     {
-      "title": "Toys API",
-      "description": "Proxy to toys service",
+      "title": "All Items Service API",
+      "description": "Proxy to all items service",
       "predicates": [
-        "Path=/toys/bestseller",
+        "Path=/startpage",
         "Method=GET"
       ],
       "filters": [

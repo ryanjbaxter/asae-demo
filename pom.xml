@@ -15,7 +15,8 @@
         <module>shared</module>
         <module>configserver</module>
         <module>discoveryserver</module>
-    </modules>
+		<module>all-items-service</module>
+	</modules>
     <packaging>pom</packaging>
 
 
