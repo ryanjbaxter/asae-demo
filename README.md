@@ -2,9 +2,11 @@
 
 ## Deploying to ASA-E
 ```shell
-$ export ASAE_SERVICE=<service-name>
-$ export ASAE_RESOURCE_GROUP=<resource-group>
-$ ./asae/deploy.sh
+export ASAE_LOCATION=<Azure region>
+export ASAE_SUBSCRIPTION=<Azure subscription id>
+export ASAE_SERVICE=<service-name>
+export ASAE_RESOURCE_GROUP=<resource-group>
+./asa-e/deploy.sh
 
 ```
 
