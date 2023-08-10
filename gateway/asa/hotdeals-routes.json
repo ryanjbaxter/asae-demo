@@ -1,5 +1,8 @@
 {
   "protocol": "HTTP",
+  "open_api": {
+    "uri": "http://hot-deals/v3/api-docs"
+  },
   "routes": [
     {
       "title": "Hot deals API",
