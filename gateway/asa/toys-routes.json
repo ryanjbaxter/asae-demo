@@ -1,5 +1,8 @@
 {
   "protocol": "HTTP",
+  "open_api": {
+    "uri": "http://toys-bestseller/v3/api-docs"
+  },
   "routes": [
     {
       "title": "Toys API",

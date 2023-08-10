@@ -1,5 +1,8 @@
 {
   "protocol": "HTTP",
+  "open_api": {
+    "uri": "http://fashion-bestseller/v3/api-docs"
+  },
   "routes": [
     {
       "title": "Fashion API",
