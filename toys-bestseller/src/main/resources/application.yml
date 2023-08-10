@@ -11,7 +11,7 @@ spring:
     mongodb:
       uri: <insert uri here>
       database: <insert db name here>
-      
+
 #---
 #spring:
 #  config:
