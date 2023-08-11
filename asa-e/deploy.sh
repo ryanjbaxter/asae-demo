@@ -8,6 +8,7 @@ echo "Create ASA scaffolding"
 az spring service-registry create -s $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
 az spring application-configuration-service create -s $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION --generation Gen2
 az spring gateway create -s $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
+az spring api-portal create -s $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
 
 echo "Creating Spring Apps"
 echo "Note these may fail if the apps already exist"
@@ -42,13 +43,23 @@ az spring app deploy --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVI
 
 echo "Assigning public endpoint to Spring Cloud Gateway"
 az spring gateway update --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --assign-endpoint true
+export GATEWAY_URL=$(az spring gateway show --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE | jq -r .properties.url)
+az spring gateway update --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE \
+--api-description "Shopping Service API" --api-title "Use This API To Shop For Items" --api-version "v0.1" --server-url "https://$GATEWAY_URL" \
+--allowed-origins "*"
+
+echo "Assigning public endpoint to API Portal"
+az spring api-portal update --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --assign-endpoint
+
 
 az spring gateway route-config create --name toys-routes --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --app-name toys-bestseller --routes-file gateway/asa/toys-routes.json
 az spring gateway route-config create --name fashion-routes --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --app-name fashion-bestseller --routes-file gateway/asa/fashion-routes.json
 az spring gateway route-config create --name hotdeals-routes --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --app-name hot-deals --routes-file gateway/asa/hotdeals-routes.json
 az spring gateway route-config create --name all-items-service-routes --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --app-name all-items-service --routes-file gateway/asa/all-items-service-routes.json
 
-export GATEWAY_URL=$(az spring gateway show --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE | jq -r .properties.url)
+export API_PORTAL_URL=$(az spring api-portal show --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE | jq -r .properties.url)
+echo "URL to API Portal"
+echo "https://$API_PORTAL_URL"
 
 echo "URL to toys service"
 echo "https://$GATEWAY_URL/toys/bestseller"
