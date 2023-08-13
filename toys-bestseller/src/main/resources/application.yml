@@ -7,6 +7,11 @@ spring:
     name: toys-bestseller
   config:
     import: optional:configserver:http://localhost:8888
+  data:
+    mongodb:
+      uri: <insert uri here>
+      database: <insert db name here>
+
 #---
 #spring:
 #  config:

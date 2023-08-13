@@ -3,11 +3,11 @@
 # Notes   : Run with 'source configDb.sh' from your shell/commandline environment
 # History : 20230810 Official "version 1"
 
-export ASAE_PREFIX=rjb
-export ASAE_LOCATION=eastus
-export ASAE_SUBSCRIPTION=rbaxter
-export ASAE_SERVICE=shopping-service
-export ASAE_RESOURCE_GROUP=s1-2023
+export ASAE_PREFIX=<Initials or other "me"fix that is easy to remember/find in the portal>
+export ASAE_LOCATION=<your region, e.g. eastus>
+export ASAE_SUBSCRIPTION=<your Azure subscription>
+export ASAE_SERVICE=<your ASA Enterprise instance name>
+export ASAE_RESOURCE_GROUP=<your resource group>
 
 # Establish seed for random naming
 export RANDOMIZER=$RANDOM
