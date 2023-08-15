@@ -32,3 +32,10 @@ az spring app deploy --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVI
 
 echo "Assigning public endpoint to Spring Cloud Gateway"
 az spring gateway update --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --assign-endpoint true
+export GATEWAY_URL=$(az spring gateway show --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE | jq -r .properties.url)
+az spring gateway update --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE \
+--api-description "Shopping Service API" --api-title "Use This API To Shop For Items" --api-version "v0.1" --server-url "https://$GATEWAY_URL" \
+--allowed-origins "*"
+
+echo "Assigning public endpoint to API Portal"
+az spring api-portal update --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --assign-endpoint
