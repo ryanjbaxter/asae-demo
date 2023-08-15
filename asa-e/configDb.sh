@@ -27,23 +27,25 @@ export COSMOSDB_MON_URL=$(az cosmosdb keys list --type connection-strings -n $CO
 # You must register the Service Connector the first time you try and use it
 az provider register --namespace Microsoft.ServiceLinker
 
-# Create a service connection from the app to the database
+# Create Service Connector linking toys-bestseller app with Cosmos DB
 az spring connection create cosmos-mongo \
     --resource-group $ASAE_RESOURCE_GROUP \
     --service $ASAE_SERVICE \
+    --subscription $ASAE_SUBSCRIPTION \
+    --connection Toys_CosMongo \
     --app toys-bestseller \
     --target-resource-group $ASAE_RESOURCE_GROUP \
     --account $COSMOSDB_MON_ACCOUNT \
     --database $ASAE_PREFIX'-my-test-db' \
-    --secret --client-type springBoot
-
+    --secret \
+    --client-type springboot
 
 # *******************************************************************************
 # TO DEPLOY THE TOYS-BESTSELLER APP ONCE CODE CHANGES ARE MADE AND TESTED LOCALLY
-#
-#  Rebuild the app using:
+# 
+# 1. Rebuild the app using:
 #    mvn clean package
-# Redeploy the updated toys app using:
+# 2. Redeploy the updated toys app using:
 #    az spring app deploy --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --artifact-path toys-bestseller/target/toys-bestseller-1.0-SNAPSHOT.jar --name toys-bestseller
 
 # Now, go exercise those endpoints! Suggestion: hit the <gateway>/startpage a few times, refresh the app map, and chase the trace(s)!
