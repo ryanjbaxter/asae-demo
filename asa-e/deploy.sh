@@ -1,5 +1,11 @@
 #!/bin/bash
 
+export ASAE_PREFIX=<Initials or other "me"fix that is easy to remember/find in the portal>
+export ASAE_LOCATION=<your region, e.g. eastus>
+export ASAE_SUBSCRIPTION=<your Azure subscription>
+export ASAE_SERVICE=<your ASA Enterprise instance name>
+export ASAE_RESOURCE_GROUP=<your resource group>
+
 echo "Creating Resource Group and ASA-E instance"
 az group create -l $ASAE_LOCATION -g $ASAE_RESOURCE_GROUP --subscription $ASAE_SUBSCRIPTION
 az spring create -n $ASAE_SERVICE -g $ASAE_RESOURCE_GROUP -l $ASAE_LOCATION --sku Enterprise --subscription $ASAE_SUBSCRIPTION
