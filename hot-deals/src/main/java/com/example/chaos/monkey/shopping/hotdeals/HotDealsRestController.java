@@ -1,16 +1,16 @@
 package com.example.chaos.monkey.shopping.hotdeals;
 
 
-import com.example.chaos.monkey.shopping.domain.Product;
-import com.example.chaos.monkey.shopping.domain.ProductBuilder;
-import com.example.chaos.monkey.shopping.domain.ProductCategory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+
+import com.example.chaos.monkey.shopping.domain.Product;
+import com.example.chaos.monkey.shopping.domain.ProductBuilder;
+import com.example.chaos.monkey.shopping.domain.ProductCategory;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Benjamin Wilms

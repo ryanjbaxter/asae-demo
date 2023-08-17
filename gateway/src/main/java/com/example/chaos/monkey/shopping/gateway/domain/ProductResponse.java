@@ -1,6 +1,7 @@
 package com.example.chaos.monkey.shopping.gateway.domain;
 
 import java.util.List;
+
 import com.example.chaos.monkey.shopping.domain.Product;
 
 /**
