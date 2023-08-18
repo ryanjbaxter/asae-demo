@@ -43,7 +43,7 @@ az spring connection create cosmos-mongo \
 # 1. Rebuild the app using:
 #    mvn clean package
 # 2. Redeploy the updated toys app using:
-#    az spring app deploy --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --artifact-path toys-bestseller/target/toys-bestseller-1.0-SNAPSHOT.jar --name toys-bestseller
+#    az spring app deploy --resource-group $ASAE_RESOURCE_GROUP --service $ASAE_SERVICE --artifact-path ./target/toys-bestseller-1.0-SNAPSHOT.jar --name toys-bestseller
 
 # Now, go exercise those endpoints! Suggestion: hit the <gateway>/startpage a few times, refresh the app map, and chase the trace(s)!
 # *******************************************************************************
