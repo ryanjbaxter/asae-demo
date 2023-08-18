@@ -11,18 +11,18 @@ export ASAE_RESOURCE_GROUP=<your resource group>
 
 # Establish seed for random naming
 export RANDOMIZER=$RANDOM
-# export RANDOMIZER='3662'
+# export RANDOMIZER='6298'
 
 export COSMOSDB_MON_ACCOUNT=$ASAE_PREFIX'-'$RANDOMIZER'-mongoacct'
 export COSMOSDB_MON_NAME=$ASAE_PREFIX'-'$RANDOMIZER'-mongodb'
 
-# ONLY DO THE FOLLOWING SECTIONS IF REINIT TO USE EXISTING DBs! (see lines 10 and 11 above)
 ## Cosmos DB for MongoDB
 az cosmosdb create -n $COSMOSDB_MON_ACCOUNT -g $ASAE_RESOURCE_GROUP --kind MongoDB --server-version 4.0
 az cosmosdb mongodb database create -a $COSMOSDB_MON_ACCOUNT -n $ASAE_PREFIX'-my-test-db' -g $ASAE_RESOURCE_GROUP --verbose
 
 # For MongoDB API, a single URL connection string (URL+key)
-export COSMOSDB_MON_URL=$(az cosmosdb keys list --type connection-strings -n $COSMOSDB_MON_ACCOUNT -g $ASAE_RESOURCE_GROUP --query "connectionStrings[0].connectionString" --output tsv)
+# Not absolutely necessary, but useful for visual confirmation
+# export COSMOSDB_MON_URL=$(az cosmosdb keys list --type connection-strings -n $COSMOSDB_MON_ACCOUNT -g $ASAE_RESOURCE_GROUP --query "connectionStrings[0].connectionString" --output tsv)
 
 # Create Service Connector linking toys-bestseller app with Cosmos DB
 az spring connection create cosmos-mongo \
