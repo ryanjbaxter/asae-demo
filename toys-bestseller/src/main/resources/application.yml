@@ -7,6 +7,7 @@ spring:
     name: toys-bestseller
   config:
     import: optional:configserver:http://localhost:8888
+
 #---
 #spring:
 #  config:
